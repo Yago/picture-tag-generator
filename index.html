@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Picture calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+  <style>
+    label { font-weight: bold; }
+
+    label + .form-control,
+    small + .form-control,
+    label + .form-group,
+    small + .form-group { margin-top: 0.5rem; }
+
+    pre { background: #f0f0f0; }
+  </style>
+</head>
+<body>
+  <div class="container pb-5">
+    <h1 class="text-center pt-3 pb-5">Picture tag generator</h1>
+    <form>
+      <div class="row">
+        <div class="col-sm-4">
+          <label for="columns">Columns nbr</label>
+          <input type="number" id="columns" value="12" class="form-control">
+          <div class="mt-4"></div>
+          <label for="ratio-width">Image ratio</label>
+          <div class="form-group row">
+            <label for="ratio-width" class="col-sm-4 col-form-label"><code>width</code></label>
+            <div class="col-sm-8">
+              <input type="number" class="form-control" id="ratio-width" value="540">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="ratio-height" class="col-sm-4 col-form-label"><code>height</code></label>
+            <div class="col-sm-8">
+              <input type="number" class="form-control" id="ratio-height" value="360">
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <label for="breakpoint-xl">Breakpoints</label>
+          <small class="form-text text-muted">
+            Bootstrap based<br>
+            in pixel
+          </small>       
+          
+          <div class="form-group row">
+            <label for="breakpoint-xl" class="col-sm-4 col-form-label"><code>xl</code></label>
+            <div class="col-sm-8">
+              <input type="number" class="form-control" id="breakpoint-xl" value="1140">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="breakpoint-lg" class="col-sm-4 col-form-label"><code>lg</code></label>
+            <div class="col-sm-8">
+              <input type="number" class="form-control" id="breakpoint-lg" value="960">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="breakpoint-md" class="col-sm-4 col-form-label"><code>md</code></label>
+            <div class="col-sm-8">
+              <input type="number" class="form-control" id="breakpoint-md" value="720">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="breakpoint-sm" class="col-sm-4 col-form-label"><code>sm</code></label>
+            <div class="col-sm-8">
+              <input type="number" class="form-control" id="breakpoint-sm" value="540">
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <label for="img-xl-width">Image width</label>
+          <small class="form-text text-muted">
+            nbr of columns<br>
+            <code>0</code> is full window width
+          </small>
+          
+          <div class="form-group row">
+            <label for="img-xl-width" class="col-sm-4 col-form-label"><code>xl</code></label>
+            <div class="col-sm-8">
+              <input type="number" class="form-control" id="img-xl-width" value="6">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="img-lg-width" class="col-sm-4 col-form-label"><code>lg</code></label>
+            <div class="col-sm-8">
+              <input type="number" class="form-control" id="img-lg-width" value="6">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="img-md-width" class="col-sm-4 col-form-label"><code>md</code></label>
+            <div class="col-sm-8">
+              <input type="number" class="form-control" id="img-md-width" value="12">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="img-sm-width" class="col-sm-4 col-form-label"><code>sm</code></label>
+            <div class="col-sm-8">
+              <input type="number" class="form-control" id="img-sm-width" value="12">
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <hr>
+
+    <div class="py-5">
+      <pre id="result"></pre>
+    </div>
+  </div>
+  <script src="index.js"></script>
+</body>
+</html>
