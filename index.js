@@ -1,9 +1,12 @@
-const renderSize = (width, ratioW, ratioH) => {
+const renderSize = (placeholder, width, ratioW, ratioH) => {
   const height = Math.round(width * ratioH / ratioW);
+  if (placeholder) return `http://via.placeholder.com/${width}x${height}.jpg`;
   return `${width}_${height}.jpg`;
 };
 
-const renderResult = ({ columns, sm, md, lg, xl, smW, mdW, lgW, xlW, ratioW, ratioH }) => {
+const renderResult = ({ columns, sm, md, lg, xl, smW, mdW, lgW, xlW, ratioW, ratioH, placeholder }) => {
+    const p = placeholder;
+
     const isXlFull = xlW === 0;
     const fXl = isXlFull ? 1 : 1 * xlW / columns;
 
@@ -21,40 +24,40 @@ const renderResult = ({ columns, sm, md, lg, xl, smW, mdW, lgW, xlW, ratioW, rat
       <source
         media="(min-width: ${xl}px)"
         srcset="${
-          renderSize(isXlFull ? 1920 : xl * fXl, ratioW, ratioH)
+          renderSize(p, isXlFull ? 1920 : xl * fXl, ratioW, ratioH)
         } 1x,${
-          renderSize(isXlFull ? 2880 : xl * fXl * 2, ratioW, ratioH)
+          renderSize(p, isXlFull ? 2880 : xl * fXl * 2, ratioW, ratioH)
         } 2x">
       <source
         media="(min-width: ${lg}px)"
         srcset="${
-          renderSize(xl * fXl, ratioW, ratioH)
+          renderSize(p, xl * fXl, ratioW, ratioH)
         } 1x,${
-          renderSize(xl * fXl * 2, ratioW, ratioH)
+          renderSize(p, xl * fXl * 2, ratioW, ratioH)
         } 2x">
       <source
         media="(min-width: ${md}px)"
         srcset="${
-          renderSize(lg * fLg, ratioW, ratioH)
+          renderSize(p, lg * fLg, ratioW, ratioH)
         } 1x,${
-          renderSize(lg * fLg * 2, ratioW, ratioH)
+          renderSize(p, lg * fLg * 2, ratioW, ratioH)
         } 2x">
       <source
         media="(min-width: ${sm + 1}px)"
         srcset="${
-          renderSize(md * fMd, ratioW, ratioH)
+          renderSize(p, md * fMd, ratioW, ratioH)
         } 1x,${
-          renderSize(md * fMd * 2, ratioW, ratioH)
+          renderSize(p, md * fMd * 2, ratioW, ratioH)
         } 2x">
       <source
         media="(max-width: ${sm}px)"
         srcset="${
-          renderSize(sm * fSm, ratioW, ratioH)
+          renderSize(p, sm * fSm, ratioW, ratioH)
         } 1x,${
-          renderSize(sm * fSm * 2, ratioW, ratioH)
+          renderSize(p, sm * fSm * 2, ratioW, ratioH)
         } 2x">
       <img src="${
-        renderSize(isXlFull ? 1920 : xl * fXl, ratioW, ratioH)
+        renderSize(p, isXlFull ? 1920 : xl * fXl, ratioW, ratioH)
       }" class="img-fluid" alt="ALT">
     </picture>
   `;
@@ -73,6 +76,7 @@ const imgLgWidthField = document.getElementById('img-lg-width');
 const imgXlWidthField = document.getElementById('img-xl-width');
 const ratioWidthField = document.getElementById('ratio-width');
 const ratioHeightField = document.getElementById('ratio-height');
+const placeholder = document.getElementById('placeholder');
 
 const result = document.getElementById('result');
 
@@ -89,6 +93,7 @@ const getParams = () => {
     xlW: parseInt(imgXlWidthField.value, 10),
     ratioW: parseInt(ratioWidthField.value, 10),
     ratioH: parseInt(ratioHeightField.value, 10),
+    placeholder: placeholder.checked,
   }
 };
 
