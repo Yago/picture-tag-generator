@@ -1,6 +1,5 @@
 const renderSize = (placeholder, width, ratioW, ratioH) => {
   const height = Math.round(width * ratioH / ratioW);
-  console.log(placeholder);
   if (placeholder) return `http://via.placeholder.com/${width}x${height}.jpg`;
   return `${width}_${height}.jpg`;
 };
